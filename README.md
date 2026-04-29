@@ -172,6 +172,7 @@ python scripts/plot_inkjet_results.py
 
 ---
 
-## License
-The code in this repository is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-Dataset: PROFACTOR FTI_Zer0P Dataset 2023 — Zenodo DOI 10.5281/zenodo.11444566 — CC BY 4.0.
+## Licence
+The code in this repository is released under the **MIT Licence**.  
+The accompanying dataset (FTI\_Zer0P Dataset 2023) is published separately on
+Zenodo under **CC BY 4.0** (DOI: 10.5281/zenodo.11444566).
