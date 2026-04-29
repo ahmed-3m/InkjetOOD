@@ -92,7 +92,7 @@ python train.py --metadata /your/path/metadata.csv --img_dir /your/path/images
 ## Directory Structure
 
 ```
-thesis_cdm_final/
+InkjetOOD/
 │
 ├── train.py            ← Training entry point
 ├── evaluate.py         ← Evaluation entry point
@@ -169,3 +169,9 @@ python scripts/plot_inkjet_results.py
 | Batch size | 64 (sep loss) / 128 (baseline) | Sep loss requires 3 forward passes; 128 causes OOM |
 | K=100 trials | K=100 | Stable AUROC estimates on small dataset (±0.003 variance) |
 | No full λ sweep | 4 points only | 266 test samples → noise overwhelms fine λ differences |
+
+---
+
+## License
+The code in this repository is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Dataset: PROFACTOR FTI_Zer0P Dataset 2023 — Zenodo DOI 10.5281/zenodo.11444566 — CC BY 4.0.
