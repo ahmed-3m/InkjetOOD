@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pt
+*.ckpt
+*.log
+nohup.out
+results/
+models/
+.env
+data/
