@@ -27,7 +27,8 @@ Two terms are combined:
    and visually subtle features (e.g. `e.rought2`).
 
    The separation loss weight λ is the primary ablation hyperparameter studied
-   in the thesis (Section 5.x).  A value of λ=0.01 was found optimal.
+   in the thesis (Chapter 5/6 ablations).  A value of λ=0.01 was found optimal
+   for the inkjet dataset; λ=0.02 is optimal for CIFAR-10.
 
 Total loss:
        L = L_denoise + λ · L_sep
