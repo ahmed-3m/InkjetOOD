@@ -23,12 +23,15 @@ This repository implements a **Conditional Diffusion Model (CDM)** for out-of-di
 
 All trained model weights live at: **[https://huggingface.co/ahmed-3m/InkjetOOD](https://huggingface.co/ahmed-3m/InkjetOOD)**
 
-| File on HF | Description | AUROC |
-|---|---|---|
-| `models/cdm_v3_yolo_bbox.pt` | **CDM λ=0.01 (proposed)** — single-split best | 0.8603 |
-| `models/cdm_v3_baseline.pt` | CDM λ=0 baseline | 0.8325 single / 0.8673 CV |
-| `models/yolo_best.pt` | YOLOv8 feature detector | mAP@50=0.950 |
-| `models/semantic_mismatch_*.pt` | Per-feature semantic mismatch models | — |
+| File on HF | Description | AUROC | Params |
+|---|---|---|---|
+| `models/cdm_v3_yolo_bbox.pt` | **CDM λ=0.01, base_ch=64 (proposed)** — single-split best | 0.8603 single-split | 9.33 M |
+| `models/cdm_v3_baseline.pt` | CDM λ=0, base_ch=128 (5-fold CV result) | 0.8673 ± 0.023 CV | 34.2 M |
+| `models/cdm_v3_test.pt` | CDM λ=0.01, base_ch=64 (dev checkpoint) | ≈0.85 | 9.33 M |
+| `models/yolo_best.pt` | YOLOv8 feature detector (8 print features) | mAP@50=0.950 | 25.86 M |
+| `models/semantic_mismatch_angle_model.pt` | Per-feature CDM: angle (~9.67:1 imbalance) | ~0.82 | 8.94 M |
+| `models/semantic_mismatch_dist1_model.pt` | Per-feature CDM: dist1 | ~0.89 | 8.94 M |
+| `models/semantic_mismatch_dots_model.pt` | Per-feature CDM: dots (best feature) | ~0.96 | 8.94 M |
 
 ---
 
@@ -369,10 +372,11 @@ Input crop (128×128×3)
    └─────────────────────────────────────┘
 ```
 
-- **Parameters:** ~9.3 M
+- **Parameters:** 9.33 M (base_ch=64, proposed model) · 34.2 M (base_ch=128, baseline model)
 - **Diffusion schedule:** Cosine, T=1000
 - **Training:** 100 epochs, AdamW (lr=2e-4), batch=64–128
 - **Separation loss:** pushes GOOD/BAD embeddings apart in latent space
+- **YOLO detector:** YOLOv8-based, 25.86 M parameters, mAP@50=0.950
 
 ---
 

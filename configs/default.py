@@ -41,7 +41,9 @@ RESULTS_DIR = Path(__file__).resolve().parents[1] / 'results'
 # Model
 # ---------------------------------------------------------------------------
 
-BASE_CHANNELS  = 64       # UNet width; 64 → ~9.3 M parameters
+BASE_CHANNELS  = 64       # UNet width; 64 → 9.33 M params (proposed model)
+                          #                128 → 34.2 M params (baseline, pretrained cdm_v3_baseline.pt)
+                          # Override with --base_channels 128 to match cdm_v3_baseline.pt
 NUM_TEMPLATES  = 3        # A / B / C template types
 NUM_FEATURES   = 8        # 8 YOLO print feature classes
 TIME_DIM       = 256      # sinusoidal timestep embedding dimension
