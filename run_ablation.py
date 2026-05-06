@@ -1,7 +1,7 @@
 """
 run_ablation.py
 ===============
-Separation-loss ablation study (Section 5.x of the thesis).
+Separation-loss ablation study (thesis Section 6.3 / Table 6.2).
 
 Trains the CDM with different values of the class separation loss weight λ
 and records the AUROC for each.  Results are saved to results/ablation/.
@@ -19,7 +19,6 @@ Usage
 
 import argparse
 import json
-import os
 import sys
 from pathlib import Path
 
@@ -98,14 +97,11 @@ def main():
         oversample_minority=False, augment=False,
     )
 
-    _nw = min(4, os.cpu_count() or 1)
-    _pw = (_nw > 0) and (sys.platform != 'win32')
-
     train_loader = DataLoader(train_ds, batch_size=args.batch_size,
-                              shuffle=True,  num_workers=_nw, pin_memory=True,
-                              persistent_workers=_pw)
+                              shuffle=True,  num_workers=8, pin_memory=True,
+                              persistent_workers=True)
     test_loader  = DataLoader(test_ds,  batch_size=8,
-                              shuffle=False, num_workers=min(2, _nw), pin_memory=True)
+                              shuffle=False, num_workers=4, pin_memory=True)
 
     # ── Run ablation ─────────────────────────────────────────────────────
     ablation_results: list[dict] = []
