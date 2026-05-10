@@ -5,6 +5,15 @@ __pycache__/
 *.log
 nohup.out
 results/
+!results/
+results/*
+!results/figures/
+results/figures/*
+!results/figures/fig1_inkjet_lambda_ablation_cv.png
+!results/figures/fig2_per_feature_auroc_cv.png
+!results/figures/fig3_cross_domain_comparison.png
+!results/figures/fig5_score_distributions_cv.png
+!results/figures/fig6_sample_predictions.png
 models/
 .env
 data/
