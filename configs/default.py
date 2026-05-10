@@ -96,7 +96,7 @@ AUGMENT             = True   # random flips/brightness on oversampled BAD sample
 
 # K in Algorithm 1 (number of Monte Carlo timestep trials per sample).
 # K=50 gives stable AUROC estimates with acceptable inference time (~5s/sample).
-# Use K=100 for final evaluation to match thesis Table 6.x single-split results.
+# Use K=100 for final evaluation to match the thesis single-split tables.
 NUM_TRIALS = 50
 
 # ---------------------------------------------------------------------------
