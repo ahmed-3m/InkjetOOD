@@ -8,9 +8,10 @@
 [![PyTorch 2.0+](https://img.shields.io/badge/pytorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-feature%20detector-111111.svg)](https://docs.ultralytics.com/)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-ahmed--3m%2FInkjetOOD-yellow.svg)](https://huggingface.co/ahmed-3m/InkjetOOD)
+[![Dataset DOI](https://img.shields.io/badge/Zenodo-10.5281%2Fzenodo.11444566-blue.svg)](https://doi.org/10.5281/zenodo.11444566)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-[Overview](#overview) · [How It Works](#how-it-works) · [Results](#results) · [Quick Start](#quick-start) · [Reproduction Guide](REPRODUCTION.md) · [Citation](#citation)
+[Overview](#overview) · [Dataset](#dataset) · [How It Works](#how-it-works) · [Results](#results) · [Quick Start](#quick-start) · [Reproduction Guide](REPRODUCTION.md) · [Citation](#citation)
 
 </div>
 
@@ -27,6 +28,34 @@ This repository implements a crop-based conditional diffusion model (CDM) for ou
 The key property is label efficiency: the CDM is trained on good print samples and used to detect defective or distribution-shifted crops at inference time. The final thesis protocol uses 5-fold stratified cross-validation on the public FTI_Zer0P inkjet dataset.
 
 Primary result: the best 5-fold CV model is the λ=0 baseline, with **0.8673 ± 0.0230 AUROC** across folds. Separation loss helps strongly in the paired CIFAR-10 study, but on this small industrial dataset no non-zero λ value significantly outperforms the baseline.
+
+---
+
+## Dataset
+
+This repository uses the public **FTI_Zer0P inkjet print dataset** released by PROFACTOR on Zenodo:
+
+- Dataset page: [https://zenodo.org/records/11444566](https://zenodo.org/records/11444566)
+- DOI: [10.5281/zenodo.11444566](https://doi.org/10.5281/zenodo.11444566)
+- Dataset licence: **Creative Commons Attribution 4.0 International (CC BY 4.0)**
+
+The dataset is not bundled in this Git repository. Download it from Zenodo, extract it locally, and point the code to it with `INKJET_DATA_DIR`.
+
+Expected metadata file:
+
+```text
+metadata.csv
+```
+
+Required `metadata.csv` schema:
+
+| Column | Description |
+|--------|-------------|
+| `file_name` | Relative image or crop filename. |
+| `label` | Binary quality label: `1 = GOOD`, `0 = BAD`. |
+| `feature` | Inkjet feature type, such as dots, distance, angle, or edge region. |
+
+The code in this repository is released under the MIT licence. The FTI_Zer0P dataset remains under CC BY 4.0 and should be cited separately when used.
 
 ---
 
@@ -176,6 +205,8 @@ Set the dataset path:
 ```bash
 export INKJET_DATA_DIR=/path/to/FTI_Zer0P_dataset
 ```
+
+The directory should contain the extracted Zenodo dataset and its `metadata.csv` file with the schema described in [Dataset](#dataset).
 
 ### Evaluate A Pretrained Checkpoint
 
