@@ -210,7 +210,7 @@ def plot_per_feature_auroc_cv(data):
 def plot_cross_domain_comparison(data):
     # CIFAR-10 data (from verified results_summary.md)
     cifar_lambdas = [0.0, 0.001, 0.01, 0.02, 0.05, 0.1]
-    cifar_aurocs  = [0.8025, 0.9732, 0.9869, 0.9911, 0.9851, 0.9667]
+    cifar_aurocs  = [0.9252, 0.9732, 0.9882, 0.9903, 0.9851, 0.9667]
 
     # Inkjet data (5-fold CV)
     inkjet_aurocs = [data[l]['mean_auroc'] for l in LAMBDAS]
@@ -233,7 +233,7 @@ def plot_cross_domain_comparison(data):
         ax.scatter(x, y, color=col, s=ms, zorder=5,
                    edgecolors=WHITE, linewidths=1.2)
 
-    ax.annotate(f'Peak: 0.9911\n(λ=0.02)',
+    ax.annotate(f'Peak: 0.9903\n(λ=0.02)',
                 xy=(x_c[peak_i], cifar_aurocs[peak_i]),
                 xytext=(x_c[peak_i] + 0.5, cifar_aurocs[peak_i] - 0.04),
                 fontsize=9, color=GOLD,
@@ -536,7 +536,7 @@ def write_cross_domain_table(data):
         r"\toprule",
         r"Dataset & Baseline ($\lambda=0$) & Best sep.\ loss & $\Delta$ AUROC \\",
         r"\midrule",
-        r"CIFAR-10 & 0.8025 & \textbf{0.9911} ($\lambda=0.02$) & \textbf{+18.9\%} \\",
+        r"CIFAR-10 & $0.925 \pm 0.111$ & $\mathbf{0.9903 \pm 0.0007}$ ($\lambda=0.02$) & $\mathbf{+6.5}$ pp \\",
         f"Inkjet QC & "
         f"\\textbf{{{data[0.0]['mean_auroc']:.4f}}}~$\\pm$~{data[0.0]['std_auroc']:.4f} & "
         f"{data[0.05]['mean_auroc']:.4f}~$\\pm$~{data[0.05]['std_auroc']:.4f} ($\\lambda=0.05$) & "

@@ -105,7 +105,7 @@ CUDA_VISIBLE_DEVICES=0 python run_cv.py \
     --epochs 100 \
     --batch_size 128 \
     --sep_loss_weight 0.0 \
-    --num_trials 50 \
+    --num_trials 100 \
     --n_folds 5 \
     --seed 42 \
     --out_dir results/cv_lambda0
@@ -241,7 +241,7 @@ for LAM in 0.0 0.01 0.02 0.05; do
       --sep_loss_weight $LAM \
       --epochs 100 \
       --batch_size 128 \
-      --num_trials 50 \
+      --num_trials 100 \
       --seed 42 \
       --out_dir results/cv_lambda${LAM}
 done
@@ -279,7 +279,7 @@ python run_ablation.py \
     --weights 0.0 0.01 0.02 0.05 \
     --epochs 100 \
     --batch_size 128 \
-    --num_trials 50 \
+    --num_trials 100 \
     --out_dir results/ablation
 
 # View summary
@@ -294,10 +294,10 @@ cat results/ablation/ablation_results.json
 
 | λ | Mean AUROC | Std | Mean FPR@95 | Protocol |
 |---|---|---|---|---|
-| **0.0 (baseline)** | **0.8673** | **0.023** | 0.563 | 5-fold CV, K=50 |
-| 0.01 | 0.8628 | 0.029 | 0.552 | 5-fold CV, K=50 |
-| 0.02 | 0.8510 | 0.033 | 0.624 | 5-fold CV, K=50 |
-| 0.05 | 0.8670 | 0.026 | 0.570 | 5-fold CV, K=50 |
+| **0.0 (baseline)** | **0.8673** | **0.023** | 0.563 | 5-fold CV, K=100 |
+| 0.01 | 0.8628 | 0.029 | 0.552 | 5-fold CV, K=100 |
+| 0.02 | 0.8510 | 0.033 | 0.624 | 5-fold CV, K=100 |
+| 0.05 | 0.8670 | 0.026 | 0.570 | 5-fold CV, K=100 |
 
 > The 5-fold CV result (λ=0, 0.8673 ± 0.023) is the primary thesis result.
 

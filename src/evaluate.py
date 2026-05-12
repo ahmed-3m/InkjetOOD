@@ -19,7 +19,8 @@ Interpretation in the OOD framework:
     and lower error under c=BAD  →  score > 0  →  classified as defect.
 
 The number of trials K trades off speed vs. estimate variance.
-K=50 was found optimal in the inkjet ablation study (Chapter 6).
+K=100 is used for the retained thesis 5-fold estimates. K=50 remains a
+faster exploratory setting for earlier single-split diagnostics.
 K=10 is optimal for CIFAR-10 (faster, similar AUROC on larger dataset).
 """
 

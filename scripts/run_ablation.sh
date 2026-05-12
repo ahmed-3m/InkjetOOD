@@ -35,7 +35,7 @@ python run_ablation.py \
     --weights    0.0 0.001 0.01 0.02 0.05 0.1 \
     --epochs     100 \
     --batch_size 128 \
-    --num_trials 50 \
+    --num_trials 100 \
     --out_dir    results/ablation
 
 echo ""

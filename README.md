@@ -52,7 +52,7 @@ Required `metadata.csv` schema:
 | Column | Description |
 |--------|-------------|
 | `file_name` | Relative image or crop filename. |
-| `label` | Binary quality label: `1 = GOOD`, `0 = BAD`. |
+| `label` | Binary quality label: `1=GOOD`, `0=BAD`. |
 | `feature` | Inkjet feature type, such as dots, distance, angle, or edge region. |
 
 The code in this repository is released under the MIT licence. The FTI_Zer0P dataset remains under CC BY 4.0 and should be cited separately when used.
@@ -150,7 +150,7 @@ Dots and distance features are easiest; edge roughness remains harder and more v
     </tr>
   </thead>
   <tbody>
-    <tr><td>CIFAR-10</td><td>0.8025</td><td><strong>0.9911 (λ=0.02)</strong></td><td><strong>+18.9 pp</strong></td></tr>
+    <tr><td>CIFAR-10</td><td>0.925 ± 0.111</td><td><strong>0.9903 ± 0.0007 (λ=0.02)</strong></td><td><strong>+6.5 pp</strong></td></tr>
     <tr><td>Inkjet QC</td><td><strong>0.8673 ± 0.0230</strong></td><td>0.8670 ± 0.0256 (λ=0.05)</td><td>≈0.0 pp (n.s.)</td></tr>
   </tbody>
 </table>
@@ -224,7 +224,7 @@ CUDA_VISIBLE_DEVICES=0 python run_cv.py \
     --epochs 100 \
     --batch_size 128 \
     --sep_loss_weight 0.0 \
-    --num_trials 50 \
+    --num_trials 100 \
     --n_folds 5 \
     --seed 42 \
     --out_dir results/cv_lambda0
@@ -242,7 +242,7 @@ For the full step-by-step guide, see [REPRODUCTION.md](REPRODUCTION.md).
 | Parameter | Default | Description |
 |-----------|---------|-------------|
 | `SEP_LOSS_WEIGHT` | `0.01` | Single-split λ default; use `0.0` for the primary 5-fold CV result. |
-| `NUM_TRIALS` | `50` | Monte Carlo timestep samples for scoring; thesis single-split tables use `100`. |
+| `NUM_TRIALS` | `50` | Monte Carlo timestep samples for scoring; use `100` for the retained thesis 5-fold CV estimates. |
 | `N_FOLDS` | `5` | Stratified cross-validation folds. |
 | `IMG_SIZE` | `128` | Crop size passed to the CDM. |
 | `BASE_CHANNELS` | `64` | Proposed model width; use `128` to match the larger baseline checkpoint. |

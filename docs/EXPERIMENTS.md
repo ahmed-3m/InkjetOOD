@@ -123,7 +123,7 @@ Overall  AUROC=0.8603  Acc=0.8158  FPR@95TPR=0.6264  N=266
 
 ## Experiment 4 — Separation Loss λ=0.05
 
-**Goal:** Test CIFAR-10 upper boundary of optimal zone on inkjet.
+**Goal:** Test non-zero separation weights suggested by CIFAR-10 on inkjet; the retained cross-validation result ultimately showed no significant gain over lambda=0.
 
 **Config:**
 ```
@@ -187,7 +187,7 @@ Total GPU time:   ~24h
 |----------|--------|-----------|
 | 5-fold CV for final results | 5-fold stratified | Single-split results unreliable; CV provides confidence intervals |
 | batch=64 for ALL runs | 64 | Eliminates batch-size confound; sep loss needs 3 forward passes |
-| λ values tested | 0.0, 0.01, 0.02, 0.05 | Covers CIFAR-10 optimal zone; more points not justified |
+| λ values tested | 0.0, 0.01, 0.02, 0.05 | Covers CIFAR-tested non-zero settings; inkjet CV does not support automatic transfer |
 | K=100 for final eval | K=100 | Stable estimates; CIFAR-10 K-ablation showed diminishing returns after K=25 |
 | seed=42 | 42 | Matches CIFAR-10 primary seed |
 

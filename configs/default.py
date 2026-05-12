@@ -70,12 +70,13 @@ WEIGHT_DECAY     = 1e-4
 
 # Class separation loss weight (λ).
 #
-# INKJET optimal (this repo): λ=0.01
-#   Single-split: 0.8603 AUROC (+2.8 pp vs baseline 0.8325)
-#   5-fold CV:    0.8628 AUROC (slightly below baseline 0.8673 — high noise on small dataset)
+# Inkjet note: lambda=0.01 is retained only as an exploratory single-split
+# default. The thesis headline 5-fold CV result uses lambda=0, K=100:
+# AUROC = 0.8673 +/- 0.0230. Non-zero lambda settings did not significantly
+# improve inkjet AUROC.
 #
 # CIFAR-10 optimal (DiffusionOOD repo): λ=0.02
-#   AUROC = 0.9911 (+18.86 pp vs baseline 0.8025)
+#   Final three-seed AUROC = 0.9903 +/- 0.0007 versus 0.925 +/- 0.111 at lambda=0.
 #
 # Set λ=0.0 to recover the standard DDPM baseline.
 SEP_LOSS_WEIGHT  = 0.01
@@ -95,8 +96,8 @@ AUGMENT             = True   # random flips/brightness on oversampled BAD sample
 # ---------------------------------------------------------------------------
 
 # K in Algorithm 1 (number of Monte Carlo timestep trials per sample).
-# K=50 gives stable AUROC estimates with acceptable inference time (~5s/sample).
-# Use K=100 for final evaluation to match the thesis single-split tables.
+# Use K=100 for the retained thesis 5-fold CV estimates. K=50 remains a
+# faster exploratory setting when reproducing earlier single-split diagnostics.
 NUM_TRIALS = 50
 
 # ---------------------------------------------------------------------------
