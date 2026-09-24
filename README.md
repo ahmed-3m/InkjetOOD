@@ -177,7 +177,7 @@ Weights are hosted on Hugging Face: [ahmed-3m/InkjetOOD](https://huggingface.co/
   <tbody>
     <tr><td><code>models/cdm_v3_baseline.pt</code></td><td>CDM λ=0, base_ch=128</td><td>0.8673 ± 0.0230 CV AUROC</td><td>34.2 M</td></tr>
     <tr><td><code>models/cdm_v3_yolo_bbox.pt</code></td><td>CDM λ=0.01, base_ch=64</td><td>0.8603 single-split AUROC</td><td>9.33 M</td></tr>
-    <tr><td><code>models/yolo_best.pt</code></td><td>YOLOv8 feature detector</td><td>0.950 mAP@50</td><td>25.86 M</td></tr>
+    <tr><td><code>models/yolo_best.pt</code></td><td>YOLOv8m feature detector (fine-tuned)</td><td>0.950 mAP@50</td><td>25.86 M</td></tr>
     <tr><td><code>semantic_mismatch_*.pt</code></td><td>Per-feature CDM checkpoints</td><td>feature-specific AUROC</td><td>8.94 M each</td></tr>
   </tbody>
 </table>
