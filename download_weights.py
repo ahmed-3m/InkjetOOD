@@ -6,7 +6,7 @@ Download pretrained model weights from HuggingFace Hub.
 This is the first step for reproducing results without training from scratch.
 
 Downloads to models/ directory:
-  models/yolo_best.pt       — YOLOv8 feature detector (mAP@50 = 95.0%)
+  models/yolo_best.pt       — YOLOv8m feature detector (mAP@50 = 95.0%)
   models/cdm_baseline.pt    — CDM λ=0 baseline  (5-fold CV AUROC 0.867 ± 0.023)
   models/cdm_proposed.pt    — CDM λ=0.01 + YOLO  (single-split AUROC 0.860)
 
