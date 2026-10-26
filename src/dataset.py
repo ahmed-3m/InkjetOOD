@@ -73,10 +73,10 @@ def _augment_pil(img: Image.Image) -> Image.Image:
     """Apply a random light augmentation to a PIL image."""
     # Horizontal flip
     if np.random.rand() < 0.5:
-        img = img.transpose(Image.FLIP_LEFT_RIGHT)
+        img = img.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
     # Slight rotation  (±10°)
     angle = np.random.uniform(-10, 10)
-    img = img.rotate(angle, resample=Image.BILINEAR, expand=False)
+    img = img.rotate(angle, resample=Image.Resampling.BILINEAR, expand=False)
     # Brightness / contrast jitter
     img = ImageEnhance.Brightness(img).enhance(np.random.uniform(0.85, 1.15))
     img = ImageEnhance.Contrast(img).enhance(np.random.uniform(0.85, 1.15))
