@@ -19,7 +19,7 @@ ultralytics==8.0.196
 # Visualization
 matplotlib==3.7.2
 seaborn==0.12.2
-tqdm==4.65.0
+tqdm==4.66.3
 
 # HuggingFace (for download_weights.py)
 huggingface-hub==0.20.3
