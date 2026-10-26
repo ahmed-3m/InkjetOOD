@@ -3,7 +3,7 @@
 # Requires Python 3.11 (Pillow 13 needs >=3.11; torch 2.0.1 supports <=3.11) on CUDA 11.8 / 12.1
 
 # Core deep learning
-torch==2.0.1
+torch==2.13.0
 torchvision==0.15.2
 
 # Data / numerics
