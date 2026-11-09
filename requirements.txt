@@ -1,7 +1,14 @@
 # InkjetOOD - Python dependencies
-# Install: pip install -r requirements.txt
-# Requires Python 3.11+ (Pillow 13 needs >=3.11). On Linux the PyPI torch wheel pulls CUDA via pip;
-# on Windows PyPI torch is CPU-only, so install torch/torchvision from the PyTorch index for a GPU.
+# Requires Python 3.11.
+# Pillow 13.0.0 requires Python >=3.11. numpy 1.24.4, pandas 2.0.3, and
+# matplotlib 3.7.2 publish wheels only through CPython 3.11.
+#
+# Quadro GV100 (Volta, sm_70), Linux and Windows: install the CUDA 12.6
+# wheels first. The Linux PyPI torch 2.14.1 wheel is CUDA 13.0, which does
+# not support Volta. The Windows PyPI wheel is CPU-only. The +cu126 builds
+# satisfy the pins below, so the second command keeps them.
+#   pip install torch==2.14.1+cu126 torchvision==0.29.1+cu126 --index-url https://download.pytorch.org/whl/cu126
+#   pip install -r requirements.txt
 
 # Core deep learning
 torch==2.14.1

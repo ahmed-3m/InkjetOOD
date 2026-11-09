@@ -40,9 +40,10 @@ All trained model weights live at: **[https://huggingface.co/ahmed-3m/InkjetOOD]
 ### Path A — Evaluate with pretrained weights (no training needed, ~5 min)
 
 ```bash
-# 1. Clone and install
+# 1. Clone and install (Python 3.11; CUDA 12.6 wheels for the Quadro GV100)
 git clone https://github.com/ahmed-3m/InkjetOOD
 cd InkjetOOD
+pip install torch==2.14.1+cu126 torchvision==0.29.1+cu126 --index-url https://download.pytorch.org/whl/cu126
 pip install -r requirements.txt
 
 # 2. Download pretrained weights from HuggingFace
@@ -122,23 +123,30 @@ bash scripts/run_cv_ablation.sh
 
 ### Requirements
 
-- Python 3.9+
-- CUDA GPU (tested on Quadro GV100 32 GB; minimum ~16 GB recommended)
+- Python 3.11
+- CUDA GPU (tested on Quadro GV100 32 GB, Volta sm_70; minimum ~16 GB recommended)
 - ~5 GB disk for model weights and dataset metadata
 
+`Pillow==13.0.0` requires Python 3.11 or newer. `numpy==1.24.4`, `pandas==2.0.3`, and `matplotlib==3.7.2` publish wheels only through CPython 3.11, so this pin set installs on Python 3.11.
+
 ### Install
+
+On Linux and on Windows, install the CUDA 12.6 PyTorch wheels first when targeting the Quadro GV100. The torch 2.14.1 wheel published to PyPI for Linux is CUDA 13.0 (`2.14.1+cu130`). CUDA 13.0 does not support Volta (sm_70). The Windows wheel on PyPI is CPU-only (`2.14.1+cpu`). CUDA 12.6 wheels include Volta:
 
 ```bash
 git clone https://github.com/ahmed-3m/InkjetOOD
 cd InkjetOOD
+pip install torch==2.14.1+cu126 torchvision==0.29.1+cu126 --index-url https://download.pytorch.org/whl/cu126
 pip install -r requirements.txt
 ```
 
-All dependencies are in `requirements.txt`. Core packages:
-- `torch>=2.0`, `torchvision>=0.15`
-- `ultralytics>=8.0` (YOLOv8)
-- `scikit-learn>=1.2`
-- `huggingface-hub>=0.20`
+`torch==2.14.1+cu126` and `torchvision==0.29.1+cu126` satisfy the pins in `requirements.txt`, so the second command keeps the CUDA 12.6 builds.
+
+Core packages in `requirements.txt`:
+- `torch==2.14.1`, `torchvision==0.29.1` (CUDA 12.6 wheels for the Quadro GV100)
+- `ultralytics==8.3.253` (YOLOv8)
+- `scikit-learn==1.5.0`
+- `huggingface-hub==0.20.3`
 
 ---
 
