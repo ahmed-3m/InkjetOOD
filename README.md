@@ -4,8 +4,8 @@
 
 **Conditional Diffusion Models for Inkjet Print Quality Control**
 
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![PyTorch 2.0+](https://img.shields.io/badge/pytorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
+[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
+[![PyTorch 2.14](https://img.shields.io/badge/pytorch-2.14-ee4c2c.svg)](https://pytorch.org/)
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-feature%20detector-111111.svg)](https://docs.ultralytics.com/)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-ahmed--3m%2FInkjetOOD-yellow.svg)](https://huggingface.co/ahmed-3m/InkjetOOD)
 [![Dataset DOI](https://img.shields.io/badge/Zenodo-10.5281%2Fzenodo.11444566-blue.svg)](https://doi.org/10.5281/zenodo.11444566)
@@ -189,11 +189,19 @@ Weights are hosted on Hugging Face: [ahmed-3m/InkjetOOD](https://huggingface.co/
 
 ### Installation
 
+Use Python 3.11. `Pillow==13.0.0` requires Python 3.11 or newer, and the pinned `numpy==1.24.4`, `pandas==2.0.3`, and `matplotlib==3.7.2` publish wheels only through CPython 3.11.
+
+Training was run on a Quadro GV100 (Volta, sm_70). On Linux and on Windows, install the CUDA 12.6 wheels before the rest of `requirements.txt`. The torch 2.14.1 wheel on PyPI for Linux is CUDA 13.0, which does not support Volta. The Windows wheel on PyPI is CPU-only. CUDA 12.6 does support this GPU:
+
 ```bash
 git clone https://github.com/ahmed-3m/InkjetOOD.git
 cd InkjetOOD
+pip install torch==2.14.1+cu126 torchvision==0.29.1+cu126 --index-url https://download.pytorch.org/whl/cu126
 pip install -r requirements.txt
 ```
+
+The `+cu126` builds satisfy `torch==2.14.1` and `torchvision==0.29.1`, so the second command leaves those wheels installed.
+
 Download pretrained weights:
 
 ```bash
